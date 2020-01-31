@@ -17,12 +17,12 @@ class Book:
 
         self.bookstore = BookStore()
 
-
+    #This function is to save a book to the database
     def save(self):
-        if self.id:
-            self.bookstore._update_book(self)
+        if self.id: # check if the book is assigned id
+            self.bookstore._update_book(self) # update the id column
         else:
-            self.bookstore._add_book(self)
+            self.bookstore._add_book(self) #save the book without id
 
 
     def delete(self):
