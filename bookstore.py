@@ -1,7 +1,7 @@
 import sqlite3
 import os
 
-db = os.path.join('database', 'books.db')
+db = os.path.join('database\\books.db')
 
 
 class Book:
@@ -88,7 +88,7 @@ class BookStore:
             :param book the Book to add """
 
             insert_sql = 'INSERT INTO books (title, author, read) VALUES (?, ?, ?)'
-
+            # exception handler when book is already on db
             try:
                 with sqlite3.connect(db) as con:
                     res = con.execute(insert_sql, (book.title, book.author, book.read))
@@ -115,9 +115,9 @@ class BookStore:
                 rows_modfied = updated.rowcount
 
             con.close()
-
+        # raise BookError if book not found
             if rows_modfied == 0:
-                raise BookError(f'Book with id {book.id} not found')
+                raise BookError(f'Book with id {book.id} not found in database')
 
         def _delete_book(self, book):
             """ Removes book from store. Raises BookError if book not in store. 
