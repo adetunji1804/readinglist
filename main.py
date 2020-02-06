@@ -52,9 +52,17 @@ def show_all_books():
 
 
 def search_book():
+
     search_term = ui.ask_question('Enter search term, will match partial authors or titles.')
-    matches = store.book_search(search_term)
-    ui.show_books(matches)
+    if search_term == None:
+
+        print('Nothing was entered try again')
+
+    else:
+        matches = store.book_search(search_term)
+        ui.show_books(matches)
+
+
 
 
 def change_read():
