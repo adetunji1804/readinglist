@@ -29,7 +29,7 @@ class Book:
         self.bookstore._delete_book(self)
 
     def __str__(self):
-        read_status = 'have' if self.read else 'have not'
+        read_status = 'have' if self.read else "haven't"
         return f'ID {self.id}, Title: {self.title}, Author: {self.author}. You {read_status} read this book.'
 
     def __repr__(self):
